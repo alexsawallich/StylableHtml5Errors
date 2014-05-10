@@ -1,4 +1,4 @@
-var StylableHtml5Errors = function(forms){
+var StylableHtml5Errors = function(forms, attachErrorMessage, removeErrorMessage){
 	/**
 	 * Little helper-function to produce a browser-compatible
 	 * EventListener.
@@ -56,7 +56,7 @@ var StylableHtml5Errors = function(forms){
 	 * @param element The element the message is attached to.
 	 * @param message The message-string.
 	 */
-	var attachErrorMessage = function(element, message){
+	var attachErrorMessage = attachErrorMessage || function(element, message){
 		// Create html-element with error-message
 		msgElement = document.createElement('div');
 		msgElement.setAttribute('class', 'errormsg');
@@ -73,7 +73,7 @@ var StylableHtml5Errors = function(forms){
 	 * @param messageElement The DOM-Node to remove.
 	 * @return void
 	 */
-	var removeErrorMessage = function(messageElement){
+	var removeErrorMessage = removeErrorMessage || function(messageElement){
 		if(messageElement.parentNode){
 			messageElement.parentNode.removeChild(messageElement);
 		}
