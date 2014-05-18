@@ -1,4 +1,11 @@
 var StylableHtml5Errors = function(forms, attachErrorMessage, removeErrorMessage){
+
+	// Check for navtive browser-support of validation-features
+	// if not we can return early to avoid js-errors caused by native functions
+	if (typeof document.createElement("input").checkValidity != "function"){
+		return;
+	}
+
 	/**
 	 * Little helper-function to produce a browser-compatible
 	 * EventListener.
@@ -10,7 +17,7 @@ var StylableHtml5Errors = function(forms, attachErrorMessage, removeErrorMessage
 	 */
 	var addEvent = function(element, event, callback){
 		if(undefined == document.attachEvent) return element.addEventListener(event, callback, false);
-		else 			 return element.attachEvent('on'+event, callback);
+		else 			 					  return element.attachEvent('on'+event, callback);
 	};
 
 	/**
@@ -24,7 +31,7 @@ var StylableHtml5Errors = function(forms, attachErrorMessage, removeErrorMessage
 	 */
 	var validateElements = function(event, form){
 		// Delete previous error-messages nodes
-		removeErrorMessages();
+		removeErrorMessages(form);
 		
 		// Check each input-element for errors
 		var formHasErrors = false;
@@ -40,7 +47,7 @@ var StylableHtml5Errors = function(forms, attachErrorMessage, removeErrorMessage
 			}
 		}
 		
-		// If one the form elements was invalid, don't submit the form
+		// If one of the form elements was invalid, don't submit the form
 		if(true == formHasErrors){
 			event.preventDefault();
 			return false;
@@ -84,8 +91,8 @@ var StylableHtml5Errors = function(forms, attachErrorMessage, removeErrorMessage
 	 *
 	 * @return void
 	 */
-	var removeErrorMessages = function(){
-		var previousMessages = document.querySelectorAll('.errormsg');
+	var removeErrorMessages = function(form){
+		var previousMessages = form.querySelectorAll('.errormsg');
 		for(idx in previousMessages){
 			removeErrorMessage(previousMessages[idx]);
 		}
