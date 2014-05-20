@@ -35,8 +35,9 @@ var StylableHtml5Errors = function(forms, attachErrorMessage, removeErrorMessage
 		
 		// Check each input-element for errors
 		var formHasErrors = false;
-		for(var childIdx = 0; childIdx < form.childElementCount; ++childIdx){
-			var element = form[childIdx];
+		var elements = form.querySelectorAll('input,textarea,select');
+		for(var childIdx = 0; childIdx < elements.length; ++childIdx){
+			var element = elements[childIdx];
 			var validity = element.validity;
 			var msg = element.validationMessage;
 			

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>StyleableHtml5Errors - Single-form-demo</title>
+		<script src="../StylableHtml5Errors.js" type="text/javascript"></script>
+		<link href="demo.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<div id="header">
+			<div class="container">
+				<h2>StylableHtml5Errors</h2>
+				<h1>Single form demo</h1>
+			</div>
+		</div>
+		<div class="container">
+			<p id="intro">
+				This demo is part of the <em>StylableHtml5Errors</em>-Project.
+				Download and more info can be found at <a href="https://github.com/alexsawallich/StylableHtml5Errors">Github</a>.
+			</p>
+			<form action="#" method="post" novalidate="novalidate">
+				<div class="form-group">
+					<label for="field-1">Required text field</label>
+					<input type="text" id="field-1" placeholder="required text field" required="required">
+				</div>
+				<div class="form-group">
+					<label for="field-2">Email field</label>
+					<input type="email" id="field-2" placeholder="email field">
+				</div>
+				<div class="form-group">
+					<label for="field-3">Url field</label>
+					<input type="url" id="field-3" placeholder="url field">
+				</div>
+				<div class="form-group">
+					<label for="field-4">Required textarea</label>
+					<textarea id="field-4" placeholder="required textarea" required="required" rows="8"></textarea>
+				</div>
+				<div class="form-actions">
+					<input type="submit" value="submit">
+				</div>
+			</form>
+			<div id="footer">
+				<a href="https://github.com/alexsawallich/StylableHtml5Errors">github.com/alexsawallich/StylableHtml5Errors</a>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var forms = document.getElementsByTagName('form');
+			StylableHtml5Errors(forms);
+		</script>
+	</body>
+</html>
